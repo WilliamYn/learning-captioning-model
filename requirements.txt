@@ -1,0 +1,12 @@
+transformers
+nltk==3.6.3
+Pillow==9.3.0
+Flask==2.2.2
+Flask-Cors==3.0.10
+tensorflow
+pandas
+numpy
+matplotlib
+opencv-python
+torch
+deep_translator
