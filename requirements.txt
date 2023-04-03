@@ -10,4 +10,4 @@ matplotlib
 opencv-python
 torch
 deep_translator
-azure
+azure-storage-blob
