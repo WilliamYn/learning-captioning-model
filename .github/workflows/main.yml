@@ -32,7 +32,7 @@ jobs:
           cd learning_model/
           python download_from_azure.py
           python text_data_processing.py
-          python generate.py
+          python model_build.py
           
       - name: commit files
         run: |
