@@ -15,7 +15,7 @@ class BlobDownloader:
   def __init__(self, container_client):
     self.my_container = container_client
 
-  def get_azure_custom_captions_txt_file():
+  def get_azure_custom_captions_txt_file(self):
     captions_txt_content = blob_client.download_blob().content_as_text()
     with open("data/textFiles/custom_captions.txt", "w") as f:
         f.write(captions_txt_content)
