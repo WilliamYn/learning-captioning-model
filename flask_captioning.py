@@ -170,7 +170,7 @@ def handle_request():
 
         return json.dumps({"tags": [(tag, float(prob)) for tag, prob in tags_and_probabilities], "captions": [image_caption], "english_cap": [image_caption]}, separators=(',', ':')), 200
     else:
-        return "This endpoint only accepts GET requests", 400
+        return "This endpoint only accepts POST requests", 400
 
 
 if __name__ == "__main__":
@@ -179,22 +179,3 @@ if __name__ == "__main__":
     app.logger.addHandler(handler)
     app.logger.setLevel(logging.DEBUG)
     app.run(host="0.0.0.0", port=80)
-    # app.run(host="127.0.0.1", port=5000)
-
-
-# Docker commands:
-# run docker daemon by opening docker
-# docker build -t flask_captioning .
-# docker tag flask_captioning walle123/flask_captioning:v1.6
-# docker run -p 3000:80 walle123/flask_captioning:v1.6
-# docker ps -a
-# docker stop ___
-# docker rm ____
-# docker rmi flask_captioning
-
-# docker run -p 3000:80 walle123/flask_captioning:v1.6
-
-
-# Docker on linux: https://docs.rapidminer.com/9.6/deployment/overview/install-docker-on-linux.html
-# sudo wget -O get-docker.sh https://get.docker.com/
-# sudo docker run -p 3000:80 -e caption_model_name="blip2" -e caption_model_type_name="coco" -e total_captions_number="5" walle123/flask_captioning:v1.6
