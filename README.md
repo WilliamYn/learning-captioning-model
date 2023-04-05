@@ -43,3 +43,52 @@ Il est à noter que l'entraînement sur de nouvelles images ne se fait pas autom
 
 ## Comparaison des deux modèles de génération de description d’images
 Pour comparer le modèle de génération d’images pré-entraîné au modèle entraîné que nous avons entraîné, nous générons les descriptions sur un ensemble de validation prédéfini. Nous avons choisi l’ensemble de validation défini par Flickr30k. Nous générons le score WER (« Word Error Rate ») entre la description de base et la description générée par notre modèle. Nous prenons ensuite la moyenne des scores WER pour chaque modèle. Un plus petit score WER représente un résultat plus précis.
+
+## Utilisation
+Il y a 3 routes exposés par ce service.
+GET /
+POST /caption
+POST /learning-model
+
+### /
+Route GET qui retourne un message de type Hello World
+
+### /caption
+Route POST qui permet d'envoyer une image avec un caption pour entrainer le modèle.
+
+#### Input JSON
+```
+{
+    "image": "image au format base64",
+    "caption": "phrase décrivant le contenu de l'image",
+    "fileType": "extension de l'image (jpeg, png, ou autre)"
+}
+```
+
+### /learning-model
+Route POST qui permet de générer des étiquettes et des captions pour une image.
+
+
+#### Input JSON
+```
+{
+    "image": "image convertit en base64"
+}
+```
+#### Output JSON
+```
+{
+    "tags": [
+        ["tag1", 0.38],
+        ["tag2", 0.12],
+        ...,
+        ["tagX", 0.01]
+    ],
+    "captions": ["the best caption"]
+    "english_captions": [
+        "The sentence the tags were generated from.",
+        ...,
+        "Another sentence the tags were generated from."
+    ]
+}
+```
