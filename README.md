@@ -12,7 +12,7 @@ Notre modèle est un modèle à trois couches. En entrée, nous donnons l'image 
 Notre modèle a 2 547 768 paramètres et 8 418 neurones (1,050 + 2048 + 1,050 + 256 + 256 + 256 + 5352 = 8,418).
 
 Figure 1 : Sortie de la fonction « model.summary() » de notre modèle
-
+![Figure 1](https://github.com/WilliamYn/learning-captioning-model/blob/main/figures/Picture1.png)
 
 ### Explication des choix
 
