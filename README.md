@@ -1,5 +1,5 @@
 # Learning-captioning-model
-Service d'étiquetage d'image à entrainer sur un set d'image étiqueté.
+Service d'étiquetage d'image qui peut être entrainé sur un ensemble d'image étiqueté.
 
 ## Description
 Le conteneur learning-captioning-model permet d’entraîner un modèle de reconnaissance d’image pour décrire, avec des mots et des phrases, le contenu de l’image. Nous extrayons ensuite les mots clés de la phrase générée à partir d'un deuxième modèle de classification « Zero-Shot ». La génération des phrases et des mots clés est donc exécutée par deux modèles distincts.
