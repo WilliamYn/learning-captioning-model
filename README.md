@@ -92,3 +92,4 @@ Route POST qui permet de générer des étiquettes et des captions pour une imag
     ]
 }
 ```
+
