@@ -117,7 +117,7 @@ def handle_add_single_caption():
 
     # Add image to azure blob
     print('Uploading image to azure')
-    upload_single_caption_to_azure(image, index, file_type)
+    upload_single_caption_to_azure(image.decode("base64"), index, file_type)
 
     return json.dumps({'status': 'success'})
 
