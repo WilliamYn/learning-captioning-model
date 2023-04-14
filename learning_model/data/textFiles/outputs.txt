@@ -1,3 +1,2 @@
-max_len=80
-last_model=./model_checkpoints/model_14.h5
-
+max_len=7
+last_model=./model_checkpoints/model_1.h5
