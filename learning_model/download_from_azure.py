@@ -69,6 +69,7 @@ def main():
   downloader = BlobDownloader(container_client)
   downloader.get_azure_custom_captions_txt_file()
   downloader.download_all_blobs_in_container()
+  download_glove()
 
 if __name__ == "__main__":
   main()
