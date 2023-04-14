@@ -18,6 +18,7 @@ import numpy as np
 import pickle
 
 content = None
+images_path = "data/Images/images"
 
 # Read the file tokens_clean.json and store the cleaned captions in a dictionary
 with open ("data/textFiles/tokens_clean.json") as file:
@@ -74,11 +75,11 @@ for i in custom_file_data.split("\n"):
     else:
         test_data.append(file_name)
 
-train_data = [image for image in train_data if os.path.isfile(os.path.join("data/Images", image))]
-test_data = [image for image in test_data if os.path.isfile(os.path.join("data/Images", image))]
+train_data = [image for image in train_data if os.path.isfile(os.path.join(images_path, image))]
+test_data = [image for image in test_data if os.path.isfile(os.path.join(images_path, image))]
 
 if len(test_data) + len(train_data) <= 1:
-    raise Exception("Not enough images in data/Images folder")
+    raise Exception(f"Not enough images in {images_path} folder")
 
 if len(test_data) == 0:
     test_data.append(train_data[-1])
@@ -123,7 +124,7 @@ def encode_image (img):
 train_encoding = {}
 # Create a dictionary of iamgeID and its feature vector
 for index, imageID in enumerate (train_data):
-    image_path = "data/Images/" + imageID
+    image_path = os.path.join(images_path, imageID)
     if not os.path.isfile(image_path):
         continue
     train_encoding[imageID] = encode_image(image_path)
@@ -140,7 +141,7 @@ test_encoding = {}
 # Create a dictionary of iamgeID and its feature vector
 
 for index, imageID in enumerate (test_data):
-    image_path = "data/Images/" + imageID #+ ".jpg"
+    image_path = os.path.join(images_path, imageID)
     if not os.path.isfile(image_path):
         continue
     test_encoding[imageID] = encode_image(image_path)
@@ -259,7 +260,7 @@ def data_generator (train_content, train_encoding, word_to_index, max_len, batch
         for imageID, cap_list in train_content.items():
             n += 1
 
-            image = train_encoding [imageID]
+            image = train_encoding[imageID]
 
             for caption in cap_list:
                 idx_seq = [word_to_index[word] for word in caption.split() if word in word_to_index]
