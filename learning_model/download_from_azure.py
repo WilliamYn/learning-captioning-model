@@ -1,4 +1,7 @@
 import os
+import requests
+import gzip
+import shutil
 # Azure storage imports
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
@@ -47,6 +50,20 @@ class BlobDownloader:
       
       # Save the blob in the data/Images directory
       self.save_blob(blob.name, bytes)
+      
+def download_glove():
+  url = 'https://github.com/uclnlp/inferbeddings/blob/master/data/glove/glove.6B.50d.txt.gz?raw=true'
+  filename = os.path.join(DATA_DIR, 'glove.6B.50d.txt.gz')
+
+  # Download the file
+  r = requests.get(url)
+  with open(filename, 'wb') as f:
+      f.write(r.content)
+
+  # Extract the file
+  with gzip.open(filename, 'rb') as f_in:
+      with open(os.path.join(DATA_DIR, 'glove.6B.50d.txt'), 'wb') as f_out:
+          shutil.copyfileobj(f_in, f_out)
 
 def main():
   downloader = BlobDownloader(container_client)
