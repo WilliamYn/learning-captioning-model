@@ -44,6 +44,8 @@ Il est à noter que l'entraînement sur de nouvelles images ne se fait pas autom
 ## Comparaison des deux modèles de génération de description d’images
 Pour comparer le modèle de génération d’images pré-entraîné au modèle entraîné que nous avons entraîné, nous générons les descriptions sur un ensemble de validation prédéfini. Nous avons choisi l’ensemble de validation défini par Flickr30k. Nous générons le score WER (« Word Error Rate ») entre la description de base et la description générée par notre modèle. Nous prenons ensuite la moyenne des scores WER pour chaque modèle. Un plus petit score WER représente un résultat plus précis.
 
+https://github.com/jehag/accuracy_checker
+
 ## Utilisation
 Il y a 3 routes exposés par ce service.
 GET /
